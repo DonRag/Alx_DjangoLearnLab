@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>  <!-- Title of the page -->
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>  <!-- Display the username of the logged-in user -->
+    <p>You are now logged in.</p>
+    
+    <!-- Form for logging out -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}  <!-- CSRF token for security -->
+        <button type="submit">Logout</button>  <!-- Logout button -->
+    </form>
+</body>
+</html>

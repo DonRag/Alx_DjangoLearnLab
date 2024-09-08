@@ -1,0 +1,20 @@
+.gitginore
+# Virtual environment
+venv/
+.env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Django specific
+*.log
+*.sqlite3
+db.sqlite3
+/static/
+/media/
+
+# Environment variables
+.env
+
+.vscode/

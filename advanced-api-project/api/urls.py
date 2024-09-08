@@ -1,12 +1,20 @@
 from django.urls import path, include
-from .views import BooklistView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
+from rest_framework.routers import DefaultRouter
+from .views import AuthorViewSet, BookViewSet, ListView, CreateView, DetailView, UpdateView, DeleteView , BookListView
+from rest_framework.authtoken.views import obtain_auth_token
+
+router = DefaultRouter()
+router.register(r'authors', AuthorViewSet)
+router.register(r'books', BookViewSet)
 
 
 urlpatterns = [
-    path('books', BooklistView.as_view(), name='book_list'),
-    path('books/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
-    path('books/create/', BookCreateView.as_view(), name='book_create'),
-    path('books/update/<int:pk>/', BookUpdateView.as_view(), name='book_update'),
-    path('books/delete/<int:pk>/', BookDeleteView.as_view(), name='book_delete'),
-
+    path('', include(router.urls)),
+    path('books/', BookListView.as_view(), name='book-list'),
+    path('books/list/', ListView.as_view(), name='book-list'),
+    path('books/create/', CreateView.as_view(), name='book-create'),
+    path('books/detail/<int:pk>/', DetailView.as_view(), name='book-detail'),
+    path('books/update/<int:pk>/', UpdateView.as_view(), name='book-update'),
+    path('books/delete/<int:pk>/', DeleteView.as_view(), name='book-delete'),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'), # Token authentication endpoint
 ]

@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Book</title>
+</head>
+<body>
+    <h1>Delete Book</h1>
+    {% if perms.your_app_name.can_delete %}
+        <p>Are you sure you want to delete the book "{{ book.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+            <a href="{% url 'book_list' %}">Cancel</a>
+        </form>
+    {% else %}
+        <p>You do not have permission to delete this book.</p>
+    {% endif %}
+</body>
+</html>
