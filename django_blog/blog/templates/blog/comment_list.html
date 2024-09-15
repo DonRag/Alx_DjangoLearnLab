@@ -1,0 +1,16 @@
+<!-- templates/comment_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>All Comments</h1>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <a href="{% url 'comment_detail' comment.pk %}">{{ comment.title }}</a> by {{ comment.owner }}
+      </li>
+    {% empty %}
+      <li>No comments available.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'comment_create' %}" class="btn btn-primary">Add New Comment</a>
+{% endblock %}

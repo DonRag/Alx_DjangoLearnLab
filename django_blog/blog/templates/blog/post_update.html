@@ -1,0 +1,19 @@
+<!-- post_update.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+Update Post
+{% endblock %}
+
+{% block content %}
+<h1>Create Post</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<a href="{% url 'post_list' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}
+

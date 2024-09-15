@@ -1,0 +1,13 @@
+<!-- templates/comment_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Comment</h1>
+  <p>Are you sure you want to delete the comment titled "{{ comment.title }}"?</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'comment_detail' comment.pk %}" class="btn btn-secondary">No, Cancel</a>
+  </form>
+{% endblock %}

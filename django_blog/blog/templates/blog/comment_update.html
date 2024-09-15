@@ -1,0 +1,12 @@
+<!-- templates/comment_update.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Edit Comment</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+  <a href="{% url 'comment_detail' comment.pk %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}
